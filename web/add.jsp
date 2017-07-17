@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td>客户描述：</td>
-            <td><input type="text" name="description"/></td>
+            <td><textarea rows="4" name="description"></textarea> </td>
         </tr>
         <tr>
             <td></td>
