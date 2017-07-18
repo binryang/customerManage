@@ -2,6 +2,7 @@ package Servlet;
 
 import Dao.CustomerDao;
 import Service.CustomerService;
+import Service.SendEmail;
 import domain.Customer;
 
 import javax.servlet.ServletException;
@@ -61,6 +62,8 @@ public class CustomerServlet extends HttpServlet {
         else {
             Customer customer = new Customer(name, gender, phone, email, description);
             customerDao.save(customer);
+            SendEmail sendEmail = new SendEmail(customer);
+            sendEmail.start();
             request.setAttribute("msg", name + "用户已经添加成功！");
             request.getRequestDispatcher("/msg.jsp").forward(request, response);
         }

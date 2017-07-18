@@ -21,7 +21,7 @@
     <form action="<c:url value="add.do"/>" method="post">
         <tr>
             <td>客户姓名：</td>
-            <td><input type="text" name="name"/></td>
+            <td><input type="text" name="name" value="${param.name==null?"":param.name}"/></td>
         </tr>
         <tr>
             <td>客户性别：</td>
@@ -34,15 +34,15 @@
         </tr>
         <tr>
             <td>客户电话：</td>
-            <td><input type="text" name="phone"/></td>
+            <td><input type="text" name="phone" value="${param.phone==null?"":param.phone}"/></td>
         </tr>
         <tr>
             <td>客户邮箱：</td>
-            <td><input type="text" name="email"/></td>
+            <td><input type="text" name="email" value="${param.email==null?"":param.email}"/></td>
         </tr>
         <tr>
             <td>客户描述：</td>
-            <td><textarea rows="4" name="description"></textarea> </td>
+            <td><textarea rows="4" name="description "></textarea> </td>
         </tr>
         <tr>
             <td></td>
