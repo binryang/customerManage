@@ -22,6 +22,15 @@ public class Customer {
         this.description = description;
     }
 
+    public Customer(Integer id,String name, String gender, String phone, String email, String description) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.description = description;
+    }
+
     public Integer getId() {
         return id;
     }

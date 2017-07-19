@@ -13,6 +13,17 @@
 </head>
 <body>
 <h3 align="center" >客户列表</h3>
+<script type="text/javascript">
+    function del(param) {
+        var fdel = window.confirm("确定删除？");
+        if (fdel){
+            document.location="delete.do?id="+param;
+        }
+    }
+    function edit(param) {
+        document.location="edit.do?id="+param;
+    }
+</script>
 <table border="1" width="70%" align="center">
     <tr>
         <th>客户姓名</th>
@@ -30,8 +41,8 @@
             <td>${cstm.email}</td>
             <td>${cstm.description}</td>
             <td>
-                <a href="<c:url value='edit.do?id=${cstm.id}'/> ">编辑</a>
-                <a href="<c:url value='delete.do?id=${cstm.id}'/> ">删除</a>
+                <input type="button" name="编辑" value="编辑" onclick="edit(${cstm.id})"/>
+                <input type="button" name="删除" value="删除" onclick="del(${cstm.id})"/>
             </td>
         </tr>
     </c:forEach>
