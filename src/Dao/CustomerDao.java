@@ -1,5 +1,6 @@
 package Dao;
 
+import domain.CriteriaCustomer;
 import domain.Customer;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface CustomerDao {
     public long getcountwithName(String name);
 
     public void save(Customer customer);
+
+    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer);
 }

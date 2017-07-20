@@ -2,6 +2,7 @@ package Service;
 
 
 import Dao.Dao;
+import domain.CriteriaCustomer;
 import domain.Customer;
 import Dao.CustomerDao;
 
@@ -60,6 +61,13 @@ public class CustomerService extends Dao<Customer> implements CustomerDao{
         String sql = "INSERT INTO customer(name,gender,phone,email,description) VALUES(?,?,?,?,?)";
         this.update(sql,customer.getName(),customer.getGender(),customer.getPhone(),customer.getEmail(),
                 customer.getDescription());
+    }
+
+    @Override
+    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer) {
+        String sql = "SELECT id,name,gender,phone,email,description FROM customer WHERE name LIKE ? AND gender LIKE ? AND phone LIKE ? AND email LIKE ? AND description LIKE ?";
+        return this.getForLIst(sql,criteriaCustomer.getName(),criteriaCustomer.getGender(),criteriaCustomer.getPhone(),
+                criteriaCustomer.getEmail(),criteriaCustomer.getDescription());
     }
 
     public CustomerService() {

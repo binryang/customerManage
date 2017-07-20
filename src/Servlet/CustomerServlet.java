@@ -3,6 +3,7 @@ package Servlet;
 import Dao.CustomerDao;
 import Service.CustomerService;
 import Service.SendEmail;
+import domain.CriteriaCustomer;
 import domain.Customer;
 
 import javax.servlet.ServletException;
@@ -118,5 +119,17 @@ public class CustomerServlet extends HttpServlet {
             response.sendRedirect("queryall.do");
         }
 
+    }
+
+    private void query(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String description = request.getParameter("description");
+        CriteriaCustomer criteriaCustomer = new CriteriaCustomer(name,gender,phone,email,description);
+        List<Customer> customers = customerDao.getAllWithCC(criteriaCustomer);
+        request.setAttribute("customers",customers);
+        request.getRequestDispatcher("/list.jsp").forward(request,response);
     }
 }
