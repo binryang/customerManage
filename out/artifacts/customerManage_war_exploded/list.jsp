@@ -47,5 +47,25 @@
         </tr>
     </c:forEach>
 </table>
+<br><br>
+<div align="center">
+    共${pagenum}页     当前 第${page}页
+    <c:choose>
+        <c:when test="${page>1}">
+            <a href="<c:url value="queryall.do?page=${page-1}"></c:url> "><input type="button" value="上一页"/></a>
+        </c:when>
+        <c:otherwise>
+            <input type="button" value="上一页" disabled="disabled"/>
+        </c:otherwise>
+    </c:choose>
+    <c:choose>
+        <c:when test="${page!=pagenum}">
+            <a href="<c:url value="queryall.do?page=${page+1}"></c:url> "><input type="button" value="下一页"/></a>
+        </c:when>
+        <c:otherwise>
+            <input type="button" value="下一页" disabled="disabled"/>
+        </c:otherwise>
+    </c:choose>
+</div>
 </body>
 </html>

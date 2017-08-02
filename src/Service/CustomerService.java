@@ -17,8 +17,12 @@ public class CustomerService extends Dao<Customer> implements CustomerDao{
      * @return
      */
     @Override
-    public List<Customer> getAll() {
-        String sql = "SELECT id,name,gender,phone,email,description FROM customer";
+    public List<Customer> getAll(int page) {
+        if (page==0){
+            page = 1;
+        }
+        int begin = (page-1) * 5;
+        String sql = "SELECT id,name,gender,phone,email,description FROM customer limit "+begin+",5";
         return this.getForLIst(sql);
     }
 
@@ -64,10 +68,28 @@ public class CustomerService extends Dao<Customer> implements CustomerDao{
     }
 
     @Override
-    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer) {
-        String sql = "SELECT id,name,gender,phone,email,description FROM customer WHERE name LIKE ? AND gender LIKE ? AND phone LIKE ? AND email LIKE ? AND description LIKE ?";
+    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer,int page) {
+        if (page==0){
+            page = 1;
+        }
+        int begin = (page-1)*5;
+        String sql = "SELECT id,name,gender,phone,email,description FROM customer WHERE name LIKE ? AND gender LIKE ? AND phone LIKE ? AND email LIKE ? AND description LIKE ?" +
+                "limit "+begin+",5";
         return this.getForLIst(sql,criteriaCustomer.getName(),criteriaCustomer.getGender(),criteriaCustomer.getPhone(),
                 criteriaCustomer.getEmail(),criteriaCustomer.getDescription());
+    }
+
+    @Override
+    public long getcountwithCC(CriteriaCustomer criteriaCustomer) {
+        String sql = "SELECT count(*) FROM customer WHERE name LIKE ? AND gender LIKE ? AND phone LIKE ? AND email LIKE ? AND description LIKE ?";
+        return this.getForValue(sql,criteriaCustomer.getName(),criteriaCustomer.getGender(),criteriaCustomer.getPhone(),
+                criteriaCustomer.getEmail(),criteriaCustomer.getDescription());
+    }
+
+    @Override
+    public long getcountwithAll() {
+        String sql = "SELECT count(*) FROM customer";
+        return this.getForValue(sql);
     }
 
     public CustomerService() {

@@ -45,8 +45,19 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void queryall(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> customers = customerDao.getAll();
+        String page = null;
+        page = request.getParameter("page");
+        if (page == null||page.equals("")){
+            page = "1";
+        }
+        long pagenum = customerDao.getcountwithAll()%5==0?customerDao.getcountwithAll()/5:customerDao.getcountwithAll()/5+1;
+        if (pagenum==0){
+            page="0";
+        }
+        List<Customer> customers = customerDao.getAll(Integer.parseInt(page));
         request.setAttribute("customers",customers);
+        request.setAttribute("pagenum",pagenum);
+        request.setAttribute("page",page);
         request.getRequestDispatcher("/list.jsp").forward(request,response);
     }
 
@@ -122,14 +133,25 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void query(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+        String page = null;
+        page = request.getParameter("page");
+        if (page==null || page.equals("")){
+            page = "1";
+        }
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String description = request.getParameter("description");
         CriteriaCustomer criteriaCustomer = new CriteriaCustomer(name,gender,phone,email,description);
-        List<Customer> customers = customerDao.getAllWithCC(criteriaCustomer);
+        long pagenum = customerDao.getcountwithCC(criteriaCustomer)%5==0?customerDao.getcountwithCC(criteriaCustomer)/5:customerDao.getcountwithCC(criteriaCustomer)/5+1;
+        if (pagenum==0){
+            page = "0";
+        }
+        List<Customer> customers = customerDao.getAllWithCC(criteriaCustomer,Integer.parseInt(page));
         request.setAttribute("customers",customers);
+        request.setAttribute("pagenum",pagenum);
+        request.setAttribute("page",page);
         request.getRequestDispatcher("/list.jsp").forward(request,response);
     }
 }

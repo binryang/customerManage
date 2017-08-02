@@ -9,7 +9,7 @@ import java.util.List;
  * Created by yangrb on 17-7-17.
  */
 public interface CustomerDao {
-    public List<Customer> getAll();
+    public List<Customer> getAll(int page);
 
     public void edit(Customer customer);
 
@@ -21,5 +21,9 @@ public interface CustomerDao {
 
     public void save(Customer customer);
 
-    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer);
+    public List<Customer> getAllWithCC(CriteriaCustomer criteriaCustomer,int page);
+
+    public long getcountwithCC(CriteriaCustomer criteriaCustomer);
+
+    public long getcountwithAll();
 }
