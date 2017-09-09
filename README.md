@@ -2,7 +2,6 @@
 
 _ _ _
 C3P0连接数据库，DBUtils处理数据库，用一个Servlet处理不同的请求，同时用到了反射的知识。
-仿照了一位仁兄（codingxiaxw）的用户管理系统的界面。
 _ _ _
 
 July 17, 2017 8:53 PM
@@ -22,4 +21,4 @@ August 2, 2017 8:13 PM
 
 September 9, 2017 9:58 AM
 SQL表
-![2017-09-09 09-56-19屏幕截图.png](/home/yangrb/桌面/2017-09-09 09-56-19屏幕截图.png)
+![image](https://github.com/binryang/customerManage/blob/master/SQL%E8%A1%A8%E6%A0%BC.png)
