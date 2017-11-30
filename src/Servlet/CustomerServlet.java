@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by yangrb on 17-7-17.
  */
-@WebServlet(name = "CustomerServlet")
+@WebServlet(name = "CustomerServlet",urlPatterns = {"*.do"})//可以替代web.xml里面的servlet-name和url-pattern
 public class CustomerServlet extends HttpServlet {
     CustomerDao customerDao = new CustomerService();
 
