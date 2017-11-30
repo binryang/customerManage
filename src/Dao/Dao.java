@@ -30,7 +30,7 @@ public class Dao<T> {
             ParameterizedType parameterizedType = (ParameterizedType) superClass;
             Type[] types = parameterizedType.getActualTypeArguments(); //获得此类型参数类型，返回Type数组 即dao<T> 的T
             if (types!=null&&types.length>0){
-                clazz = (Class<T>) types[0];
+                clazz = (Class<T>) types[0];//返回当前的T  Customer
             }
         }
     }
