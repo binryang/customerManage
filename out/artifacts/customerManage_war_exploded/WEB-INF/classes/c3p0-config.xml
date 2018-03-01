@@ -5,10 +5,10 @@
 
     <property name="user">root</property>
     <property name="password">123456</property>
-    <property name="driverclass">com.mysql.jdbc.Driver</property>
-    <property name="jdbcUrl">jdbc:mysql://127.0.0.1/customer</property>
+    <property name="driverClass">com.mysql.jdbc.Driver</property>
+    <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/customer</property>
 
-    <property name="password">123456</property>
+
     <property name="acquireIncrement">5</property>
     <property name="initialPoolSize">10</property>
     <property name="minPoolSize">10</property>
