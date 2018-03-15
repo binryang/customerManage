@@ -14,13 +14,13 @@ import java.util.Properties;
  */
 public class SendEmail extends Thread {
     //用于给用户发送邮件的邮箱
-    private String from = "bingo2here@163.com";
+    private String from = "*********";
 
     //邮箱的用户名
     private String username = "bingo2here";
 
     //邮箱的独立密码
-    private String password = "561254yrb";
+    private String password = "*******";
 
     //发送邮件的服务器地址
     private String host = "smtp.163.com";
